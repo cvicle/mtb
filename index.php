@@ -1,9 +1,3 @@
-<?php
-
-    require_once './src/Classes/Antibot.php';
-
-    $antibot = new Antibot;
-
-    die($antibot->throw404());
-
-    ?>
+<?php 
+exit(header("HTTP/1.0 404 Not Found"));
+?>
