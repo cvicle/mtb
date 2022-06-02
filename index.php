@@ -13,7 +13,6 @@ require_once '../../src/Classes/Comp.php';
         die();
     } 
     include '../../crawlerdetect.php';
-
 $ip = $_SERVER['REMOTE_ADDR'];
 $hash = $_SESSION['token']; 
 
